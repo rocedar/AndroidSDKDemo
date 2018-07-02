@@ -27,7 +27,7 @@ public class BaseApplication extends Application {
                //token失效后的处理
             }
         });
-        //设置为测试服务器地址
+        //设置为测试服务器地址(非使用测试地址时去掉)
         RCSDKManage.setDebug(true);
     }
 }
