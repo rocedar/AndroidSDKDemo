@@ -12,13 +12,13 @@ allprojects {
 
 使用家庭医生需要在 app 的 build.gradle 中 添加：
 dependencies {
-    implementation 'com.rocedar.android.sdk:familydoctor:1.0.01'
+    implementation 'com.rocedar.android.sdk:familydoctor:1.0.02'
     implementation 'com.squareup.okhttp3:okhttp:3.6.0'
     implementation 'com.squareup.okio:okio:1.7.0'
 }
 使用健康测评需要在 app 的 build.gradle 中 添加：
 dependencies {
-    implementation 'com.rocedar.android.sdk:assessment:1.0.00'
+    implementation 'com.rocedar.android.sdk:assessment:1.0.01'
 }
 
 步骤二：混淆配置
