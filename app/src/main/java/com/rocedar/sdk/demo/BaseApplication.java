@@ -1,9 +1,12 @@
 package com.rocedar.sdk.demo;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.rocedar.lib.base.manage.RCSDKManage;
 import com.rocedar.lib.base.network.IRCDataErrorLister;
+import com.rocedar.lib.base.network.IRCRequestCode;
+import com.rocedar.lib.base.unit.RCToast;
 
 /**
  * 项目名称：瑰柏SDK-基础库
@@ -23,8 +26,18 @@ public class BaseApplication extends Application {
         //（重要）初始化并设置token失效监听
         RCSDKManage.getInstance().init(this, new IRCDataErrorLister() {
             @Override
-            public void error(int code, String msg) {
-               //token失效后的处理
+            public void error(Context context, int code, String s) {
+                if (code == IRCRequestCode.STATUS_APP_CODE_TOKEN_OVERDUE) {
+                    //token失效
+//                    TestLoginActivity.goActivity(context);
+                } else if (code == IRCRequestCode.STATUS_APP_CODE_NO_PHONE_NUMBER) {
+                    //该用户没有绑定手机号
+                    RCToast.Center(context, "没有手机号或手机号格式不正确");
+                    //给用户设置手机号方法，如果设置的手机号有问题会继续抛这个错误
+//                    RCFDConfigUtil.setPhoneNumber(context, "有效的手机号");//
+                } else if (code == IRCRequestCode.STATUS_APP_CODE_PHONE_NUMBER_INVALID) {
+                    //该用户已经绑定手机号
+                }
             }
         });
         //设置为测试服务器地址(非使用测试地址时去掉)
