@@ -12,13 +12,13 @@ allprojects {
 
 使用家庭医生需要在 app 的 build.gradle 中 添加：
 dependencies {
-    implementation 'com.rocedar.android.sdk:familydoctor:1.0.02'
+    implementation 'com.rocedar.android.sdk:familydoctor:1.0.06'
     implementation 'com.squareup.okhttp3:okhttp:3.6.0'
     implementation 'com.squareup.okio:okio:1.7.0'
 }
 使用健康测评需要在 app 的 build.gradle 中 添加：
 dependencies {
-    implementation 'com.rocedar.android.sdk:assessment:1.0.01'
+    implementation 'com.rocedar.android.sdk:assessment:1.0.04'
 }
 
 步骤二：混淆配置
@@ -48,6 +48,15 @@ dependencies {
 RCSDKManage.getInstance().init(this, new IRCDataErrorLister() {
     @Override
     public void error(int code, String msg) {
-        //token失效后处理并重新设置token
+         if (code == IRCRequestCode.STATUS_APP_CODE_TOKEN_OVERDUE) {
+                           //token失效
+         } else if (code == IRCRequestCode.STATUS_APP_CODE_NO_PHONE_NUMBER) {
+                           //该用户没有绑定手机号
+       //                    RCToast.Center(context, "没有手机号或手机号格式不正确");
+                           //给用户设置手机号方法，如果设置的手机号有问题会继续抛这个错误
+       //                    RCFDConfigUtil.setPhoneNumber(context, "有效的手机号");//
+                       } else if (code == IRCRequestCode.STATUS_APP_CODE_PHONE_NUMBER_INVALID) {
+                           //该用户已经绑定手机号
+                       }
     }
 });
