@@ -27,6 +27,8 @@ dependencies {
 -keep class com.rocedar.** {*;}
 -dontwarn okio.**
 -dontwarn okhttp3.**
+-keep class com.cdfortis.** {*;}
+-keep class com.google.protobuf.** {*;}
 
 二、	初始化配置
 步骤一：AppID和AppSecret配置（必须配置）
@@ -60,3 +62,17 @@ RCSDKManage.getInstance().init(this, new IRCDataErrorLister() {
                        }
     }
 });
+
+三、其他注意事项
+1.SDK引用的库如果有冲突，引用时需要配置
+implementation (com.rocedar.android.sdk:familydoctor:1.0.06){
+  exclude group: 'com.android.support'
+}
+以下是可能出现冲突的包，如果有加在上面
+com.youzanyun.open.mobile
+com.mcxiaoke.volley
+com.github.bumptech.glide
+com.google.code.gson
+org.greenrobot:eventbus
+
+
