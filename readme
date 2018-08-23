@@ -12,7 +12,7 @@ allprojects {
 
 使用家庭医生需要在 app 的 build.gradle 中 添加：
 dependencies {
-    implementation 'com.rocedar.android.sdk:familydoctor:1.0.06'
+    implementation 'com.rocedar.android.sdk:familydoctor:1.0.11'
     implementation 'com.squareup.okhttp3:okhttp:3.6.0'
     implementation 'com.squareup.okio:okio:1.7.0'
 }
@@ -65,7 +65,7 @@ RCSDKManage.getInstance().init(this, new IRCDataErrorLister() {
 
 三、其他注意事项
 1.SDK引用的库如果有冲突，引用时需要配置
-implementation (com.rocedar.android.sdk:familydoctor:1.0.06){
+implementation (com.rocedar.android.sdk:familydoctor:1.0.11){
   exclude group: 'com.android.support'
 }
 以下是可能出现冲突的包，如果有加在上面
