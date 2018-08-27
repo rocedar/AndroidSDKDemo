@@ -36,6 +36,13 @@
 -keep class com.rocedar.** {*;}
 -dontwarn okio.**
 -dontwarn okhttp3.**
+-keep class com.cdfortis.** {*;}
+-keep class com.google.protobuf.** {*;}
+
+-keep class * extends com.rocedar.lib.base.config.IRCBaseUtil {*;}
+-keep class * extends com.rocedar.lib.base.config.IWebViewBaseUtil {*;}
+-keep class * extends com.rocedar.lib.base.image.load.IRCImageManagerBase {*;}
+-keep class * extends com.rocedar.sdk.familydoctor.config.IRCFDConfig {*;}
 
 #-keep class com.cdfortis.** {*;}
 #-keep class com.google.protobuf.** {*;}
