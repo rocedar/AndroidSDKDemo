@@ -10,12 +10,18 @@ allprojects {
     }
 }
 
+
 使用家庭医生需要在 app 的 build.gradle 中 添加：
 dependencies {
-    implementation 'com.rocedar.android.sdk:familydoctor:1.0.11'
+    implementation 'com.rocedar.android.sdk:familydoctor:1.0.12'
+    implementation 'com.rocedar.android.base:glide:1.0.00'
     implementation 'com.squareup.okhttp3:okhttp:3.6.0'
     implementation 'com.squareup.okio:okio:1.7.0'
 }
+*特别说明：1.0.11及之前版本不用引用 'com.rocedar.android.base:glide:1.0.00'；
+          1.0.12开始可以选择引用'com.rocedar.android.base:glide:1.0.00'，或实现IRCImageManager
+          接口并且在任意地方调用RCBaseConfig.setImageManagerBase(IRCImageManagerBase)方法以用于图片加载。
+
 使用健康测评需要在 app 的 build.gradle 中 添加：
 dependencies {
     implementation 'com.rocedar.android.sdk:assessment:1.0.04'
@@ -71,7 +77,6 @@ implementation (com.rocedar.android.sdk:familydoctor:1.0.11){
 以下是可能出现冲突的包，如果有加在上面
 com.youzanyun.open.mobile
 com.mcxiaoke.volley
-com.github.bumptech.glide
 com.google.code.gson
 org.greenrobot:eventbus
 

@@ -8,6 +8,8 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -26,9 +28,19 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    implementation 'com.rocedar.android.sdk:familydoctor:1.0.06'
     implementation 'com.rocedar.android.sdk:assessment:1.0.04'
-    implementation 'com.squareup.okhttp3:okhttp:3.6.0'
+
+    implementation 'com.rocedar.android.sdk:familydoctor:1.0.12'
     implementation 'com.squareup.okio:okio:1.7.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.6.0'
+
+    //以下为两种实现图片加载，以保障SDK中的图片正常显示
+    //第一种，使用瑰柏的工具类，使用后无效其他配置，目前实现基于glide4.7.1
+//    implementation 'com.rocedar.android.base:glide:1.0.00'
+    //第二种，使用其他的实现方法，不仅限于glide
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+
+    implementation 'com.android.support:multidex:1.0.3'
 
 }
