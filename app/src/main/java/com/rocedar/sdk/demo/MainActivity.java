@@ -8,7 +8,6 @@ import android.widget.RadioGroup;
 import com.rocedar.lib.base.config.RCBaseConfig;
 import com.rocedar.lib.base.manage.RCBaseActivity;
 import com.rocedar.lib.base.manage.RCSDKManage;
-import com.rocedar.lib.base.network.IRCDataErrorLister;
 import com.rocedar.sdk.assessment.RCAssessmentListActivity;
 import com.rocedar.sdk.demo.rocderconfig.FamilyDoctorConfig;
 import com.rocedar.sdk.familydoctor.app.RCFDMainActivity;
@@ -23,6 +22,7 @@ public class MainActivity extends RCBaseActivity {
     private Button button2;
     private Button button3;
     private Button button4;
+    private Button button5;
 
     private RadioGroup groupColor;
     private RadioGroup groupTitleBg;
@@ -36,12 +36,13 @@ public class MainActivity extends RCBaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mRcHeadUtil.setTitle("SDK DEMO ALL").setLeftButtonGone();
+        mRcHeadUtil.setTitle("Rocedar SDK DEMO").setLeftButtonGone();
 
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
         button3 = findViewById(R.id.button3);
         button4 = findViewById(R.id.button4);
+        button5 = findViewById(R.id.button5);
 
 
         //主题配置
@@ -71,9 +72,18 @@ public class MainActivity extends RCBaseActivity {
             @Override
             public void onClick(View v) {
                 //跳转到家庭页面主页面
-                //手机号（必填），头像地址（网络绝对地址），设备列表（多个设备逗号隔开，没有给""）
-                RCFDMainActivity.goActivity(MainActivity.this, 这里是手机号,
-                        "", "");
+                //手机号（必填），头像地址（网络绝对地址），设备列表（多个设备逗号隔开，没有给""），版本号（0为仅有家庭医生版本，1为带名医的版本）
+                RCFDMainActivity.goActivity(MainActivity.this, "这里是手机号",
+                        "头像地址", "设备列表", 0);
+            }
+        });
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //跳转到家庭页面主页面
+                //手机号（必填），头像地址（网络绝对地址），设备列表（多个设备逗号隔开，没有给""），版本号（0为仅有家庭医生版本，1为带名医的版本）
+                RCFDMainActivity.goActivity(MainActivity.this, "这里是手机号",
+                        "头像地址", "设备列表", 1);
             }
         });
 
@@ -104,12 +114,10 @@ public class MainActivity extends RCBaseActivity {
         RCFDConfigUtil.setClassPath(FamilyDoctorConfig.class);
         //基础图片配置（具体可以参考文档）
         RCBaseConfig.setBaseConfigClassPath(FamilyDoctorConfig.class);
-
     }
 
 
     /**
-     *
      * 该方法仅提供demo中查看
      * 请在AndroidManifest.xml 中<application下android:theme的样式中添加对应的配置项（如果不添加，运行会报错）
      */
@@ -161,5 +169,6 @@ public class MainActivity extends RCBaseActivity {
         }
 
     }
+
 
 }

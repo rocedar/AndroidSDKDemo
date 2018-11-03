@@ -1,5 +1,7 @@
 package com.rocedar.sdk.demo.rocderconfig;
 
+import android.app.Activity;
+
 import com.rocedar.lib.base.config.IRCBaseUtil;
 
 /**
@@ -35,5 +37,29 @@ public class BaseConfig implements IRCBaseUtil {
     @Override
     public int imageResDefault() {
         return -1;
+    }
+
+    /**
+     * 是否实现分享
+     *
+     * @return
+     */
+    @Override
+    public boolean share() {
+        return false;
+    }
+
+    /**
+     * 分享功能实现
+     *
+     * @param activity
+     * @param s
+     * @param s1
+     * @param s2
+     * @param s3
+     */
+    @Override
+    public void share(Activity activity, String s, String s1, String s2, String s3) {
+
     }
 }

@@ -115,6 +115,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="家庭医生V1.0(视频问诊)" />
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="家庭医生V1.1(视频问诊、名医在线)" />
 
 
     <Button
