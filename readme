@@ -11,16 +11,31 @@ allprojects {
 }
 
 
+在 Project 的 build.gradle 中添加：
+allprojects {
+    repositories {
+        maven {
+            url "http://develop.rocedar.com:18003/nexus/content/groups/public/"
+        }
+    }
+}
 使用家庭医生需要在 app 的 build.gradle 中 添加：
 dependencies {
-    implementation 'com.rocedar.android.sdk:familydoctor:1.0.12'
-    implementation 'com.rocedar.android.base:glide:1.0.00'
+    implementation 'com.rocedar.android.sdk:familydoctor:1.1.04'（2018年10月）
     implementation 'com.squareup.okhttp3:okhttp:3.6.0'
     implementation 'com.squareup.okio:okio:1.7.0'
+implementation 'com.rocedar.android.base:glide:1.0.00'（特别说明1）
+implementation 'com.rocedar.android.base:yunxin:1.0.00'（特别说明2）
 }
-*特别说明：1.0.11及之前版本不用引用 'com.rocedar.android.base:glide:1.0.00'；
+
+*特别说明：1）1.0.11及之前版本不用引用 'com.rocedar.android.base:glide:1.0.00'；
           1.0.12开始可以选择引用'com.rocedar.android.base:glide:1.0.00'，或实现IRCImageManager
           接口并且在任意地方调用RCBaseConfig.setImageManagerBase(IRCImageManagerBase)方法以用于图片加载。
+
+*特别说明：2）如果使用名医在线视频问诊功能需额外添加，如果app中有使用云信的功请勿引用，
+          如果没有引用仅名医在线视频咨询功能则无法使用，可以使用电话咨询功能。
+          该功能与家庭医生的在线问诊不冲突。
+
 
 使用健康测评需要在 app 的 build.gradle 中 添加：
 dependencies {
@@ -83,5 +98,14 @@ com.youzanyun.open.mobile
 com.mcxiaoke.volley
 com.google.code.gson
 org.greenrobot:eventbus
+
+
+1.	V1.1版本修改点说明
+1）	修改familydoctor版本为1.1.04
+2）	图片加载方式有修改，具体见第《五、图片加载配置》快速使用方法引用implementation 'com.rocedar.android.base:glide:1.0.00'
+3）	家庭医生添加名医咨询功能，如需使用修改打开家庭医生的方法
+4）	修改了家庭医生服务购买的方式，去掉了有赞商城的购买，无需修改，购买方式和3）中家庭医生选择的版本没有冲突，所有版本都使用新的购买方式
+5）	如果使用名医在线视频问诊功能需额外添加，implementation  'com.rocedar.android.base:yunxin:1.0.00'  如果app中有使用云信的功请勿引用，如果没有引用仅名医在线视频咨询功能则无法使用，可以使用电话咨询功能。该功能与家庭医生的在线问诊不冲突。如果不冲突引用该库即可使用名医在线的视频问诊功能;
+
 
 
